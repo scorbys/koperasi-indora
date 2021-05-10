@@ -54,15 +54,6 @@
                                     <td><?= $a->foto ?></td>
                                     <td><?= $a->deskripsi ?></td>
                                     <td>
-                                        <?php if($a->status == 1){
-                                            echo 'ENABLE';
-                                        }else{
-                                            echo 'DISABLE';
-                                        } ?>
-                                    </td>
-                                    <td><?= $a->no_urut ?></td>
-                                    <td>
-                                        <a href="admin/iklan/detail/<?= $a->id ?>" class="btn btn-warning" title="Detail produk iklan"><i class="fa fa-list"></i></a>
                                         <a href="admin/iklan/edit/<?= $a->id ?>" class="btn btn-success" title="Edit iklan"><i class="fa fa-edit"></i></a>
                                         <a href="admin/iklan/hapus/<?= $a->id ?>" onClick='return confirm("Apakah anda yakin akan menghapus data ini ?")' class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                     </td>
