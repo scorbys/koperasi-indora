@@ -72,7 +72,7 @@ class Iklan extends MY_Controller {
 
 	public function aksi_edit()
 	{
-		$input					= $this->input->post();
+		$input					= $this->input->post(); 
 		$nmfile 				= "iklan".'-'.time();
 		$path   				= './img/';
 		$config['upload_path'] 	= $path;
@@ -81,21 +81,20 @@ class Iklan extends MY_Controller {
 		$this->upload->initialize($config);
 
 		if ($this->upload->do_upload('foto')){
-			$gbr 				= $this->upload->data();
-			
-			$data				= array(
-								'foto' => $gbr['file_name'],
-								'deskripsi' => $input['deskripsi']
+			$gbr 				= $this->upload->data(); 
+			$data					= array(
+									'foto' => $gbr['file_name'],  
+									'deskripsi' => $input['deskripsi'] 
 			);
 			$where				= array('id' => $input['id']);
 			$this->m_crud->update_data('tbl_iklan',$data,$where);
-			unlink('./img/'.$input['foto_lama']);
+			unlink($path.$input['foto_lama']);
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>Berhasil !</strong> Data iklan berhasil disimpan.</div>');
 			redirect(base_url('admin/iklan'));
 		}
 		else{
-			$data				= array(
-								'deskripsi' => $input['deskripsi']
+			$data					= array(  
+									'deskripsi' => $input['deskripsi']  
 			);
 			$where				= array('id' => $input['id']);
 			$this->m_crud->update_data('tbl_iklan',$data,$where);
