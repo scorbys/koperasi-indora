@@ -7,7 +7,7 @@ class M_iklan extends CI_Model{
   }
 
   function edit_data($a){
-    $query=$this->db->query("SELECT * FROM tbl_iklan WHERE id = '$a'");
+    $query=$this->db->query("SELECT * FROM tbl_iklan WHERE id_iklan = '$a'");
     return $query;
   }
 }

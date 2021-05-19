@@ -30,7 +30,7 @@ class Iklan extends MY_Controller {
 
 	public function tambah()
 	{
-		$data["title"]		= "Promo";
+		$data["title"]		= "Iklan";
 		$this->load->view('admin/head',$data);
 		$this->load->view('admin/menu',$data);
 		$this->load->view('admin/tambah-iklan',$data);
@@ -79,24 +79,27 @@ class Iklan extends MY_Controller {
 		$config['allowed_types']= 'gif|jpg|png|jpeg|bmp';
 		$config['file_name'] 	= $nmfile;
 		$this->upload->initialize($config);
-
+		
+		echo('edit');
 		if ($this->upload->do_upload('foto')){
+			echo('foto');
 			$gbr 				= $this->upload->data(); 
 			$data					= array(
 									'foto' => $gbr['file_name'],  
 									'deskripsi' => $input['deskripsi'] 
 			);
-			$where				= array('id' => $input['id']);
+			$where				= array('id_iklan' => $input['id_iklan']);
 			$this->m_crud->update_data('tbl_iklan',$data,$where);
 			unlink($path.$input['foto_lama']);
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>Berhasil !</strong> Data iklan berhasil disimpan.</div>');
 			redirect(base_url('admin/iklan'));
 		}
 		else{
+			echo('deskripsi');
 			$data					= array(  
 									'deskripsi' => $input['deskripsi']  
 			);
-			$where				= array('id' => $input['id']);
+			$where				= array('id_iklan' => $input['id_iklan']);
 			$this->m_crud->update_data('tbl_iklan',$data,$where);
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>Berhasil !</strong> Data iklan berhasil disimpan.</div>');
 			redirect(base_url('admin/iklan'));
@@ -105,8 +108,8 @@ class Iklan extends MY_Controller {
 
 	public function hapus($a){
 		$tabel		= 'tbl_iklan';
-		$where		= array('id' => $a);
-		$foto		= $this->db->query("SELECT * FROM tbl_iklan WHERE id = '$a' limit 1")->row()->foto;
+		$where		= array('id_iklan' => $a);
+		$foto		= $this->db->query("SELECT * FROM tbl_iklan WHERE id_iklan = '$a' limit 1")->row()->foto;
 		unlink('./img/'.$foto);
 		$this->m_crud->hapus($tabel,$where);
 		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>Berhasil !</strong> Data iklan berhasil dihapus.</div>');
