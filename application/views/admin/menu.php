@@ -111,7 +111,7 @@
                         </ul>
                     </li>-->
                     <li <?php if($title == "Data Ongkir"){ ?>class="active"<?php } ?>><a href="admin/ongkir"><i class="fa fa-truck"></i> <span>Data Ongkir</span></a></li>
-                    <li <?php if($title == "Data Iklan"){ ?>class="active"<?php } ?>><a href="admin/iklan"><i class="fa fa-truck"></i> <span>Data Iklan</span></a></li>
+                    <li <?php if($title == "Data Iklan"){ ?>class="active"<?php } ?>><a href="admin/iklan"><i class="fa fa-photo"></i> <span>Data Iklan</span></a></li>
                     <li <?php if($title == "Tentang KOPRANESIA"){ ?>class="active"<?php } ?>><a href="admin/about"><i class="fa fa-gear"></i> <span>Tentang INDORA</span></a></li>
                     <li <?php if($title == "Akun"){ ?>class="active"<?php } ?>><a href="admin/akun"><i class="fa fa-gears"></i> <span>Akun</span></a></li>
                 </ul>
